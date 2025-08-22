@@ -11,7 +11,7 @@ const config: GatsbyConfig = {
     siteTitle: `Shepherd's Blog`,
     siteTitleAlt: `Shepherd's Blog - Shepherdtoherd`,
     siteHeadline: `Shepherd's Blog - 时间洪流`,
-    siteUrl: `https://blog.shepherdtoherd.me`,
+    siteUrl: `https://summeronetwo.github.io`,
     siteDescription: `在时间的洪流中，寻找属于自己的声音`,
     siteImage: `/banner.jpg`,
     siteLanguage: `zh-cn`,
