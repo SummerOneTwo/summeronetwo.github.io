@@ -8,14 +8,14 @@ const config: GatsbyConfig = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.mjs
-    siteTitle: `Minimal Blog`,
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
-    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
-    siteUrl: `https://minimal-blog.lekoarts.de`,
-    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
+    siteTitle: `Shepherd's Blog`,
+    siteTitleAlt: `Shepherd's Blog - Shepherdtoherd`,
+    siteHeadline: `Shepherd's Blog - 时间洪流`,
+    siteUrl: `https://blog.shepherdtoherd.me`,
+    siteDescription: `在时间的洪流中，寻找属于自己的声音`,
     siteImage: `/banner.jpg`,
-    siteLanguage: `en`,
-    author: `@lekoarts_de`,
+    siteLanguage: `zh-cn`,
+    author: `Shepherd`,
   },
   trailingSlash: `always`,
   plugins: [
@@ -35,12 +35,12 @@ const config: GatsbyConfig = {
         ],
         externalLinks: [
           {
-            name: `Bluesky`,
-            url: `https://bsky.app/profile/lekoarts.de`,
+            name: `Github`,
+            url: `https://github.com/SummerOneTwo`,
           },
           {
             name: `Homepage`,
-            url: `https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter`,
+            url: `https://notion.shepherdtoherd.me/`,
           },
         ],
       },
@@ -54,9 +54,9 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `Shepherd's Blog - 时间洪流`, // 修改为您的博客全名
+        short_name: `Shepherd's Blog`, // 修改为您的博客简称
+        description: `在时间的洪流中，寻找属于自己的声音`, // 修改为您的博客描述
         start_url: `/`,
         background_color: `#fff`,
         // This will impact how browsers show your PWA/website
@@ -123,7 +123,7 @@ const config: GatsbyConfig = {
   }
 }`,
             output: `rss.xml`,
-            title: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
+            title: `Shepherd's Blog`, // 修改为您的博客标题
           },
         ],
       },

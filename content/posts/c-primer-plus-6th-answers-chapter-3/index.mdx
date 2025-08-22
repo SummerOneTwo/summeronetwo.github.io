@@ -1,0 +1,174 @@
+---
+title: "C Primer Plus 第6版 编程练习答案（第三章）"
+date: "2021-04-11"
+description: "C Primer Plus 第6版 编程练习答案，第三章内容。"
+tags:
+  - C Primer Plus
+  - 编程
+---
+
+3.1.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+
+	int int_max = 2147483647 ;
+	printf("%d   %d\n",int_max,int_max+1);
+
+	float float_max = 3.40e38;
+	printf("%f   %f\n",float_max,float_max+1);
+
+	float float_min = 3.40e-38;
+	printf("%f   %f\n",float_min,float_min-1);
+
+
+	return 0;
+}
+```
+
+
+
+
+
+3.2.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	int ASCII;
+	printf("Please enter a ASCII.\n");
+	scanf("%d", &ASCII);
+	printf("%d ASCII is related to %c",ASCII,ASCII);
+	
+	return 0;
+}
+```
+
+
+
+
+
+3.3.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	printf("\aStartled by the sudden sound, Sally shouted,\n");
+	printf("\"By the Great Pumpkin, what was that!\"");
+	
+	return 0;
+}
+```
+
+
+
+
+
+3.4.c
+
+```cpp
+#include<stdio.h>
+
+int main(void) {
+	float num;
+	
+	printf("Enter a floating-point values: \n");
+	scanf("%f", &num);
+	printf("fixed-point notation: %f\n", num);
+	printf("exponential notation: %e\n", num);
+	printf("p notation: %#a", num);
+	
+	return 0;
+}
+```
+
+
+
+
+
+3.5.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	int name;
+	
+	printf("Please enter your olds.\n");
+	scanf("%d", &name);
+	printf("You have lived for %f seconds.", name*3.156e7);
+	
+	return 0;
+}
+```
+
+
+
+
+
+3.6.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	int num;
+	printf("Please enter the quart of water.\n");
+	scanf("%d", &num);
+	printf("%d quater of water include %d water molecules." , num, num * 950 / 3.0e-23);
+	
+	return 0;
+}
+```
+
+
+
+
+
+3.7.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	double height;
+	printf("Please enter your height.(in inches)\n");
+	scanf("%lf", &height);
+	printf("Your height in centimenter is %fcm.\n", height * 2.54);
+	
+	return 0;
+}
+```
+
+
+
+
+
+3.8.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	float cup_numbers;
+	
+	printf("Hello,how many cups dou you want to enter?\n");
+	scanf("%f", &cup_numbers);
+	printf("In pint is %f.\n", cup_numbers / 2.0);
+	printf("In ounces is %f.\n", cup_numbers * 8.0);
+	printf("In table_spoons is %f.\n", cup_numbers * 8 * 2);
+	printf("In tea_spoons is %f.", cup_numbers * 8 * 2 * 3);
+	
+	return 0;
+}
+```

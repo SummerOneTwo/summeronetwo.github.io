@@ -1,0 +1,537 @@
+---
+title: "C Primer Plus 第6版 编程练习答案（第七章）"
+date: "2021-04-11"
+description: "C Primer Plus 第6版 编程练习答案，第七章内容。"
+tags:
+  - C Primer Plus
+  - 编程
+---
+
+7.1.c
+
+```cpp
+#include <stdio.h>
+int main(void) {
+	char ch;
+	int sp_ct = 0;
+	int nl_ct = 0;
+	int other = 0;
+	while ((ch = getchar()) != '#') {
+		if (ch == ' ')
+			sp_ct++;
+		else if (ch == '\n')
+			nl_ct++;
+		else
+			other++;
+	}
+	printf("spaces: %d, newlines: %d, others: %d\n", sp_ct, nl_ct, other);
+
+	return 0;
+}
+```
+
+
+
+
+
+7.2.c
+
+```cpp
+#include <stdio.h>
+#define STOP '#'
+int main(void)
+{
+	char ch;
+	int ct = 0;
+	while((ch = getchar()) != STOP)
+	{
+		if(ct++ % 8 == 0)
+			printf("\n");
+		if (ch == '\n')
+            printf("'\\n'=%d\t", ch);
+        else if (ch == '\t')
+            printf("'\\t'=%d\t", ch);
+        else
+            printf("'%c'=%d\t", ch, ch);
+	}
+	
+	return 0;
+}
+```
+
+
+
+
+
+7.3.c
+
+```cpp
+#include <stdio.h>
+int main(void) {
+	int n;
+	double sumeven = 0.0;
+	int ct_even = 0;
+	double sumodd = 0.0;
+	int ct_odd = 0;
+
+	while (scanf("%d", &n) == 1 && n != 0) {
+		if (n % 2 == 0) {
+			sumeven += n;
+			++ct_even;
+		} else { // n % 2 is either 1 or -1
+			sumodd += n;
+			++ct_odd;
+		}
+	}
+	printf("Number of evens: %d", ct_even);
+	if (ct_even > 0)
+		printf(" average: %g", sumeven / ct_even);
+	putchar('\n');
+
+	printf("Number of odds: %d", ct_odd);
+	if (ct_odd > 0)
+		printf(" average: %g", sumodd / ct_odd);
+	putchar('\n');
+	printf("\ndone\n");
+
+	return 0;
+}
+```
+
+
+
+
+
+7.4.c
+
+```cpp
+#include <stdio.h>
+#define STOP '#'
+int main(void)
+{
+	char ch;
+	int ct1 = 0;
+	int ct2 = 0;
+	while((ch = getchar()) != STOP)
+	{
+		if(ch == '.')
+		{
+			putchar('!');
+			++ct1;
+		}
+		else if(ch == '!')
+		{
+			putchar('!');
+			putchar('!');
+			++ct2;
+		}
+		else
+			putchar(ch);
+	}
+	printf("\n%d replacement(s) of . with !\n", ct1);
+	printf("%d replacement(s) of ! with !!\n", ct2);
+	
+	return 0;
+}
+```
+
+
+
+
+
+7.5.c
+
+```cpp
+#include <stdio.h>
+int main(void) {
+	char ch;
+	int ct1 = 0;
+	int ct2 = 0;
+	while ((ch = getchar()) != '#') {
+		switch(ch) {
+			case '.' :
+				putchar('!');
+				++ct1;
+				break;
+			case '!' :
+				putchar('!');
+				putchar('!');
+				++ct2;
+				break;
+			default :
+				putchar(ch);
+		}
+	}
+	printf("\n%d replacement(s) of . with !\n", ct1);
+	printf("%d replacement(s) of ! with !!\n", ct2);
+
+	return 0;
+}
+```
+
+
+
+
+
+7.6.c
+
+```cpp
+#include <stdio.h>
+#include <stdbool.h>
+#define STOP '#'
+int main(void)
+{
+	char ch;
+	int ct = 0;
+	bool ei = false;
+	while((ch = getchar()) != STOP) {
+		switch(ch) {
+			case 'e':
+				ei = true;
+				break;
+			case 'i':
+				if(ei = true)
+					++ct;
+			default:
+				ei = false;
+		}
+	}
+	printf("\n'ei' appeared %d times.\n", ct);
+	
+	return 0;
+}
+```
+
+
+
+
+
+7.7.c
+
+```cpp
+#include <stdio.h>
+#define BASEPAY 10 // $10 per hour
+#define BASEHRS 40 // hours at basepay
+#define OVERTIME 1.5 // 1.5 time
+#define AMT1 300 // 1st rate tier
+#define AMT2 150 // 2st rate tier
+#define RATE1 0.15 // rate for 1st tier
+#define RATE2 0.20 // rate for 2nd tier
+#define RATE3 0.25 // rate for 3rd tier
+int main(void)
+{
+	double hours;
+	double gross;
+	double net;
+	double taxes;
+
+	printf("Enter the number of hours worked this week: ");
+	scanf("%lf", &hours);
+	if (hours <= BASEHRS)
+		gross = hours * BASEPAY;
+	else
+		gross = BASEHRS * BASEPAY + (hours - BASEHRS) * BASEPAY * OVERTIME;
+	if (gross <= AMT1)
+		taxes = gross * RATE1;
+	else if (gross <= AMT1 + AMT2)
+		taxes = AMT1 * RATE1 + (gross - AMT1) * RATE2;
+	else
+		taxes = AMT1 * RATE1 + AMT2 * RATE2 + (gross - AMT1 - AMT2) * RATE3;
+	net = gross - taxes;
+	printf("gross: $%.2f; taxes: $%.2f; net: $%.2f\n", gross, taxes, net);
+
+	return 0;
+}
+```
+
+
+
+
+
+7.8.c
+
+```cpp
+#include <stdio.h>
+#include <stdbool.h>
+#include <ctype.h>
+#define BASEPAY_1 8.75
+#define BASEPAY_2 9.33
+#define BASEPAY_3 10.00
+#define BASEPAY_4 11.20
+#define BASEHRS 40 // hours at basepay
+#define OVERTIME 1.5 // 1.5 time
+#define AMT1 300 // 1st rate tier
+#define AMT2 150 // 2st rate tier
+#define RATE1 0.15 // rate for 1st tier
+#define RATE2 0.20 // rate for 2nd tier
+#define RATE3 0.25 // rate for 3rd tier
+int main(void) {
+	double hours;
+	double gross;
+	double net;
+	double taxes;
+	int BASEPAY;
+	int ch;
+	bool error = false;
+
+	printf("**********************************************************************\n");
+	printf("Enter the number corresponding to the desired pay rate or action:\n");
+	printf("1) $8.75/hr                         2) $9.33/hr\n");
+	printf("3) $10.00/hr                        4) $11.20/hr\n");
+	printf("5) Quit\n");
+	printf("**********************************************************************\n");
+
+	while((ch = getchar()) != '5')  {
+		switch(ch) {
+			case '1':
+				BASEPAY = BASEPAY_1;
+				break;
+			case '2':
+				BASEPAY = BASEPAY_2;
+				break;
+			case '3':
+				BASEPAY = BASEPAY_3;
+				break;
+			case '4':
+				BASEPAY = BASEPAY_4;
+				break;
+			default:
+				if(isspace(ch))
+					break;
+				else {
+					printf("Please enter the correct number.\n");
+					error = true;
+				}
+		}
+		if(error) {
+			continue;
+		}
+
+		printf("Enter the number of hours worked this week: ");
+		scanf("%lf", &hours);
+		if (hours <= BASEHRS)
+			gross = hours * BASEPAY;
+		else
+			gross = BASEHRS * BASEPAY + (hours - BASEHRS) * BASEPAY * OVERTIME;
+		if (gross <= AMT1)
+			taxes = gross * RATE1;
+		else if (gross <= AMT1 + AMT2)
+			taxes = AMT1 * RATE1 + (gross - AMT1) * RATE2;
+		else
+			taxes = AMT1 * RATE1 + AMT2 * RATE2 + (gross - AMT1 - AMT2) * RATE3;
+		net = gross - taxes;
+		printf("gross: $%.2f; taxes: $%.2f; net: $%.2f\n", gross, taxes, net);
+	}
+	printf("\nDone.\n");
+	return 0;
+}
+```
+
+
+
+
+
+7.9.c
+
+```cpp
+#include <stdio.h>
+#include <stdbool.h>
+int main(void)
+{
+	int limit;
+	int num;
+	int div;
+	bool numIsPrime; // use int if stdbool.h not available
+
+	printf("Enter a positive integer: ");
+	while (scanf("%d", &limit) == 1 && limit > 0) {
+		if (limit > 1)
+			printf("Here are the prime numbers up through %d\n", limit);
+		else
+			printf("No primes.\n");
+		for (num = 2; num <= limit; num++) {
+			for (div = 2, numIsPrime = true; (div * div) <= num; div++)
+				if (num % div == 0)
+					numIsPrime = false;
+			if (numIsPrime)
+				printf("%d is prime.\n", num);
+		}
+		printf("Enter a positive integer (q to quit): ");
+	}
+	printf("Done!\n");
+
+	return 0;
+}
+```
+
+
+
+
+
+7.10.c
+
+```cpp
+#include <stdio.h>
+#define PLAN1 17850
+#define PLAN2 23900
+#define PLAN3 29750
+#define PLAN4 14875
+#define RATE1 0.15
+#define RATE2 0.28
+
+int main(void) {
+	int n;
+	double wage, tax;
+
+	while (1) {
+		printf("********************************\n");
+		printf("1) single\n");
+		printf("2) householder\n");
+		printf("3) married\n");
+		printf("4) married but divorced\n");
+		printf("5) quit\n");
+		printf("********************************\n");
+		printf("Please you choose: ");
+		scanf("%d", &n);
+		if(n == 5)
+			break;
+		else {
+			printf("Please enter your wage: ");
+			scanf("%lf", &wage);
+		}
+		switch(n) {
+			case 1:
+				if (wage <= PLAN1)
+					tax = wage * RATE1;
+				else
+					tax = PLAN1 * RATE1 + (wage - PLAN1) * RATE2;
+				printf("Your tax: %g\n\n", tax);
+				break;
+			case 2:
+				if (wage <= PLAN2)
+					tax = wage * RATE1;
+				else
+					tax = PLAN2 * RATE1 + (wage - PLAN2) * RATE2;
+				printf("Your tax: %g\n\n", tax);
+				break;
+			case 3:
+				if (wage <= PLAN4)
+					tax = wage * RATE1;
+				else
+					tax = PLAN4 * RATE1 + (wage - PLAN4) * RATE2;
+				printf("Your tax: %g\n\n", tax);
+				break;
+			case 4:
+				if (wage <= PLAN4)
+					tax = wage * RATE1;
+				else
+					tax = PLAN4 * RATE1 + (wage - PLAN4) * RATE2;
+				printf("Your tax: %g\n\n", tax);
+		}
+	}
+	printf("Done.\n");
+
+	return 0;
+}
+```
+
+
+
+
+
+
+
+7.11.c
+
+```cpp
+#include <stdio.h>
+#include <ctype.h>
+int main(void) {
+	const double price_artichokes = 2.05;
+	const double price_beets = 1.15;
+	const double price_carrots = 1.09;
+	const double DISCOUNT_RATE = 0.05;
+	const double under5 = 6.50;
+	const double under20 = 14.00;
+	const double base20 = 14.00;
+	const double extralb = 0.50;
+
+	char ch;
+	double lb_artichokes = 0;
+	double lb_beets = 0;
+	double lb_carrots = 0;
+	double lb_temp;
+	double lb_total;
+
+	double cost_artichokes;
+	double cost_beets;
+	double cost_carrots;
+	double cost_total;
+	double final_total;
+	double discount;
+	double shipping;
+	printf("Enter a to buy artichokes, b for beets, ");
+	printf("c for carrots, q to quit: ");
+	while ((ch = getchar()) != 'q' && ch != 'Q') {
+		if (ch == '\n')
+			continue;
+		while (getchar() != '\n')
+			continue;
+		ch = tolower(ch);
+		switch (ch) {
+			case 'a' :
+				printf("Enter pounds of artichokes: ");
+				scanf("%lf", &lb_temp);
+				lb_artichokes += lb_temp;
+				break;
+			case 'b' :
+				printf("Enter pounds of beets: ");
+				scanf("%lf", &lb_temp);
+				lb_beets += lb_temp;
+				break;
+
+			case 'c' :
+				printf("Enter pounds of carrots: ");
+				scanf("%lf", &lb_temp);
+				lb_carrots += lb_temp;
+				break;
+			default :
+				printf("%c is not a valid choice.\n", ch);
+		}
+		printf("Enter a to buy artichokes, b for beets, ");
+		printf("c for carrots, q to quit: ");
+	}
+
+	cost_artichokes = price_artichokes * lb_artichokes;
+	cost_beets = price_beets * lb_beets;
+	cost_carrots = price_carrots * lb_carrots;
+	cost_total = cost_artichokes + cost_beets + cost_carrots;
+	lb_total = lb_artichokes + lb_beets + lb_carrots;
+	if (lb_total <= 0)
+		shipping = 0.0;
+	else if (lb_total < 5.0)
+		shipping = under5;
+	else if (lb_total < 20)
+		shipping = under20;
+	else
+		shipping = base20 + extralb * lb_total;
+	if (cost_total > 100.0)
+		discount = DISCOUNT_RATE * cost_total;
+	else
+		discount = 0.0;
+	final_total = cost_total + shipping - discount;
+	printf("Your order:\n");
+	printf("%.2f lbs of artichokes at $%.2f per pound:$ %.2f\n",
+	       lb_artichokes, price_artichokes, cost_artichokes);
+	printf("%.2f lbs of beets at $%.2f per pound: $%.2f\n",
+	       lb_beets, price_beets, cost_beets);
+	printf("%.2f lbs of carrots at $%.2f per pound: $%.2f\n",
+	       lb_carrots, price_carrots, cost_carrots);
+	printf("Total cost of vegetables: $%.2f\n", cost_total);
+	if (cost_total > 100)
+		printf("Volume discount: $%.2f\n", discount);
+	printf("Shipping: $%.2f\n", shipping);
+	printf("Total charges: $%.2f\n", final_total);
+	return 0;
+}
+```

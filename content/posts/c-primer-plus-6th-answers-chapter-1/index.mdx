@@ -1,0 +1,25 @@
+---
+title: "C Primer Plus 第6版 编程练习答案（第一章）"
+date: "2021-04-11"
+description: "C Primer Plus 第6版 编程练习答案，第一章内容。"
+tags:
+  - C Primer Plus
+  - 编程
+---
+
+```cpp
+#include <stdio.h>
+#define INCH_PER_CM 2.54
+
+int main(void) {
+ 
+	double inch, cm;
+	printf("Enter an inch value:");
+	scanf("%lf", &inch);
+	
+	cm = inch * INCH_PER_CM;
+	printf("The cm value is:%lf\n", cm);
+	
+	return 0;
+}
+```

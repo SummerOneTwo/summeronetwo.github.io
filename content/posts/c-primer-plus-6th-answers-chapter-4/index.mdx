@@ -1,0 +1,212 @@
+---
+title: "C Primer Plus 第6版 编程练习答案（第四章）"
+date: "2021-04-11"
+description: "C Primer Plus 第6版 编程练习答案，第四章内容。"
+tags:
+  - C Primer Plus
+  - 编程
+---
+
+4.1.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	char first_name[20], last_name[20];
+	printf("Please enter your first name.\n");
+	scanf("%s", first_name);
+	printf("Please enter your last name.\n");
+	scanf("%s", last_name);
+	printf("%s,%s", first_name, last_name);
+	
+	return 0;
+}
+```
+
+
+
+
+
+4.2.c
+
+```cpp
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+	
+	char first_name[20], last_name[20];
+	printf("Please enter your first name.\n");
+	scanf("%s", first_name);
+	printf("Please enter your last name.\n");
+	scanf("%s", last_name);
+	
+	printf("a: \"%s %s\"\n", first_name, last_name);
+	printf("b: \"%20s %20s\"\n", first_name, last_name);
+	printf("c: \"%-20s %-20s\"\n", first_name, last_name);
+	
+	int lenght_first, lenght_last;
+	lenght_first = strlen(first_name);
+	lenght_last = strlen(last_name);
+	printf("d: %*s %*s", lenght_first, first_name, lenght_last, last_name);
+	
+	return 0;
+}
+```
+
+
+
+
+
+4.3.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	double number;
+	printf("Please enter a float number.\n");
+	scanf("%lf", &number);
+	
+	printf("a: %.1f  %.1e\n", number, number);
+	printf("b: %.3f  %.3E\n", number, number);
+	
+	return 0;
+}
+```
+
+
+
+
+
+4.4.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	float height;
+	char name[20];
+	
+	printf("Please enter your height(in inches).\n");
+	scanf("%f", &height);
+	printf("Please enter your name.\n");
+	scanf("%s", name);
+	
+	printf("%s, you are %.3f feet tall", name, height);
+	
+	return 0;
+}
+```
+
+
+
+
+
+4.5.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+	
+	float speed;
+	float bytes;
+	
+	printf("What's speed when you download(Mb/s)?\n");
+	scanf("%f", &speed);
+	printf("How large is the file size(MB)?\n");
+	scanf("%f", &bytes);
+	printf("At %.2f megabits per second, a file of %.2f megabytes download in %.2f seconds\n",
+		speed, bytes, (bytes * 8) / speed);
+	
+	return 0;
+} 
+```
+
+
+
+
+
+4.6.c
+
+```cpp
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+	
+	char first_name[20], last_name[20];
+	int lenght_first, lenght_last;
+	
+	printf("Please enter your first name.\n");
+	scanf("%s", first_name);
+	printf("Please enter your last name.\n");
+	scanf("%s", last_name);
+	
+	lenght_first = strlen(first_name);
+	lenght_last = strlen(last_name);
+	
+	printf("%*s %*s\n", lenght_first, first_name, lenght_last, last_name);
+	printf("%*d %*d\n", lenght_first, lenght_first, lenght_last, lenght_last);
+	printf("%*s %*s\n", lenght_first, first_name, lenght_last, last_name);
+	printf("%-*d %-*d\n", lenght_first, lenght_first, lenght_last, lenght_last);
+	
+	return 0;
+}
+```
+
+
+
+
+
+4.7.c
+
+```cpp
+#include <stdio.h>
+#include <float.h>
+
+int main(void) {
+	
+	double number1 = 1.0 / 3.0;
+	float number2 = 1.0 / 3.0;
+	
+	printf("*%.6lf*\n*%.12lf*\n*%.16lf*\n", number1, number1, number1);
+	printf("*%.6f*\n*%.12f*\n*%.16f*\n", number2, number2, number2);
+	printf("FLT_DIG = %d\n", FLT_DIG);
+	printf("DBL_DIG = %d\n", DBL_DIG);
+
+	
+	return 0;
+}
+```
+
+
+
+
+
+4.8.c
+
+```cpp
+#include <stdio.h>
+#define PER_GALLONS 3.785
+#define PER_KM 1.609
+
+int main(void) {
+	
+    const double MILES = 3.785;	
+	double mileage;
+	double gasoline;
+	
+	printf("Enter the mileage and the amount of gasoline consumed.\n");
+	scanf("%lf %lf", &mileage, &gasoline);
+	printf("Consumed one gasoline oil can drive %.1f miles.\n", mileage / gasoline);
+	printf("Translate in rise/km: %.1f", (gasoline * PER_GALLONS) / (PER_KM * mileage * 100));
+	
+	return 0;
+ }
+```

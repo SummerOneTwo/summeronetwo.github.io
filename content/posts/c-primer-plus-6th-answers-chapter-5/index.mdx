@@ -1,0 +1,237 @@
+---
+title: "C Primer Plus 第6版 编程练习答案（第五章）"
+date: "2021-04-11"
+description: "C Primer Plus 第6版 编程练习答案，第五章内容。"
+tags:
+  - C Primer Plus
+  - 编程
+---
+
+5.1.c
+
+```cpp
+#include <stdio.h>
+#define PER 60
+
+int main(void) {
+	
+	int minute, second, hour;
+	printf("Please enter minutes.\n");
+	scanf("%d", &minute);
+	while(minute > 0) {
+		
+		hour = minute / PER;
+		second = minute % PER;
+		printf("%d minutes is %d hours and %d seconds.\n", minute, hour, second);
+		
+		printf("Please entet another number(0 to exit):");
+		scanf("%d", &minute);
+	}
+	
+	return 0;
+}
+```
+
+
+
+
+
+5.2.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+
+	int number, i;
+
+	printf("Please enter a integer.\n");
+	scanf("%d", &number);
+
+	for(i = 0; i <= 10; i++) {
+
+		printf("%d ", number);
+		number = number + 1;
+	}
+
+	return 0;
+}
+```
+
+
+
+
+
+5.3.c
+
+```cpp
+#include <stdio.h>
+#define WEEK 7
+
+int main(void) {
+	
+	int day_input, weeks, days;
+	printf("Please enter days.\n");
+	scanf("%d", &day_input);
+	
+	while(day_input > 0) {
+		
+		weeks = day_input / WEEK;
+		days = day_input % WEEK;
+		printf("%d days are %d weeks, %d days.\n", day_input, weeks, days);
+		printf("Please enter another number(0 to exit):");
+		scanf("%d", &day_input);
+	}
+	
+	return 0;
+}
+```
+
+
+
+
+
+5.4.c
+
+```cpp
+#include <stdio.h>
+#define CM_PER_FEET 30.48
+#define CM_PER_INCHES 2.54
+
+int main(void) {
+
+	float height_cm;
+	int height_feet;
+	float height_inches;
+
+	printf("Please enter your height(in cm):");
+	scanf("%f", &height_cm);
+	while(height_cm > 0) {
+
+		height_feet = (int)(height_cm / CM_PER_FEET);
+		height_inches = (height_cm - height_feet * CM_PER_FEET) / CM_PER_INCHES;
+		printf("%.1f cm = %d feet, %.1f inches\n", height_cm, height_feet, height_inches);
+		
+		printf("Enter a height in centimeters (<= 0 to quit): ");
+		scanf("%f", &height_cm);
+	}
+
+	return 0;
+}
+```
+
+
+
+
+
+5.5.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+
+	int count, sum, n;
+	sum = 0;
+	count = 0;
+
+	printf("How many days dou you want to work?\n");
+	scanf("%d", &n);
+	while(count++ < n) {
+		sum = sum + count;
+	}
+	printf("sum = %d\n", sum);
+
+	return 0;
+}
+```
+
+
+
+
+
+5.6.c
+
+```cpp
+#include <stdio.h>   
+                              
+int main(void) {
+	
+	int count, sum, n;
+	sum = 0;
+	count = 0;
+	
+	printf("How many days dou you want to work?\n");
+	scanf("%d", &n);
+	while(count++ < n) {
+		
+			sum = sum + count * count;
+		}
+	printf("sum = %d\n", sum);
+	
+	return 0;
+}
+```
+
+
+
+
+
+5.7.c
+
+```cpp
+#include <stdio.h>
+
+void cubic(void);
+
+int main(void) {
+
+	printf("Enter a number in double type.\n");
+	cubic();
+
+	return 0;
+}
+
+void cubic(void) {
+
+	double number;
+	scanf("%lf", &number);
+	printf("The cube of this number is %f", number * number * number);
+}
+```
+
+
+
+
+
+5.8.c
+
+```cpp
+#include <stdio.h>
+
+int main(void) {
+
+	int second_operand = 0;
+	int first_operand = 0;
+
+	printf("This program computers moduli.\n");
+	printf("Enter an integer to serve as the second operand: \n");
+	scanf("%d", &second_operand);
+	
+	printf("Now enter the first operand: \n");
+	scanf("%d", &first_operand);
+	
+	printf("%d %% %d is %d\n", first_operand, second_operand, first_operand % second_operand);
+	
+	printf("Enter next number for first operand (<= 0 to quit): \n");
+	scanf("%d", &first_operand);
+	while (first_operand > 0) {
+
+		printf("%d %% %d is %d\n", first_operand, second_operand, first_operand % second_operand);
+		printf("Enter next number for first operand (<= 0 to quit): \n");
+		scanf("%d", &first_operand);
+	}
+
+	printf("Done\n");
+}
+```
